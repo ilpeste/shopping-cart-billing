@@ -8,9 +8,9 @@ import org.canato.billing.bean.Item;
  * @author matteo
  *
  */
-public final class Helper {
+public final class ItemHelper {
 	
-	private Helper(){
+	private ItemHelper(){
 	}
 	
 	public static Item getPasta() {
