@@ -21,16 +21,10 @@ Run the following command to launch the CLI (note that the jar will be in the ta
 
 java -jar billing-jar-with-dependencies.jar <CSV input file path>
 
+![CLI Screenshot](http://i.imgur.com/2gE79kX.pngg "CLI Screenshot")
+
 
 TODO
 -----------------------------
-* add a simple CLI interface which parse a CSV and print the output
 * correct typos and grammar mistakes in comment... 
-
-#### NEED FURTHER ANALYSIS
------------------------------
-* Should I use BigDecimal instead of Double for representing the currency (especially for rounding issues with cents)?
-* Can discount policies be added/removed runtime? (Evaluate with the client because these will affect the list returned by the service)
-* Should Item.Type enum be customizable? 
-* Should ReceiptManager be a singleton class?
  
