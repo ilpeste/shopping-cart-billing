@@ -1,9 +1,9 @@
 package org.canato.billing.util;
 
-import org.canato.billing.discount.manager.DiscountManager;
-import org.canato.billing.discount.manager.DiscountStrategyManager;
 import org.canato.billing.discount.service.StaticStrategyService;
 import org.canato.billing.discount.service.StrategyService;
+import org.canato.billing.manager.ReceiptManager;
+import org.canato.billing.manager.ReceiptManagerImpl;
 
 import com.google.inject.AbstractModule;
 
@@ -21,8 +21,8 @@ public class DiscountManagerInjector extends AbstractModule {
 		bind(StrategyService.class).to(StaticStrategyService.class);
 		//bind(StrategyService.class).to(XMLStrategyService.class);
 		
-		// bind to the discount strategy manager
-		bind(DiscountManager.class).to(DiscountStrategyManager.class);
+		// bind to the receipt manager
+		bind(ReceiptManager.class).to(ReceiptManagerImpl.class);
 	}
 	
 }

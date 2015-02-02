@@ -1,6 +1,7 @@
 package org.canato.billing.discount.strategy;
 
 import org.canato.billing.bean.Item;
+import org.canato.billing.util.CommonUtils;
 
 /**
  * Discount strategy based on the type of the item passed.
@@ -30,7 +31,8 @@ public class ItemTypeDiscountStrategy implements DiscountStrategy<Item> {
 		if (item == null) {
 			return new Double(0);
 		}
-		return item.getPrice() * (amount / 100.0f);
+//		return item.getPrice() * (amount / 100.0f);
+		return CommonUtils.round(item.getPrice() * (amount / 100.0f));
 	}
 	
 }

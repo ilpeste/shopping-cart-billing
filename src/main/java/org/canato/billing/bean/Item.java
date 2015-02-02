@@ -3,7 +3,7 @@ package org.canato.billing.bean;
 import java.io.Serializable;
 
 /**
- * The item bean.
+ * The item bean: it represents a single line of an order.
  * 
  * It implements {@link Serializable} in order to make easier
  * the transformation into a JSON, XML or other serializable data type.
@@ -30,12 +30,14 @@ public class Item implements Serializable {
 	protected String name;
 	protected Double price;
 	protected Type type;
+	protected int quantity;
 	
-	public Item(String name, Double price, Type type) {
+	public Item(String name, Double price, Type type, int quantity) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.type = type;
+		this.quantity = quantity;
 	}
 
 	public Double getPrice() {
@@ -61,5 +63,17 @@ public class Item implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public int getQuantity() {
+		return quantity;
+	}
 
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	public Double getGrossTotal() {
+		return price * quantity;
+	}
+	
 }

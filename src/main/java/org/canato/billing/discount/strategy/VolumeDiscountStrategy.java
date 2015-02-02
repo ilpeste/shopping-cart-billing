@@ -1,6 +1,7 @@
 package org.canato.billing.discount.strategy;
 
 import org.canato.billing.bean.Receipt;
+import org.canato.billing.util.CommonUtils;
 
 /**
  * Discount strategy based on entire receipt passed.
@@ -30,7 +31,8 @@ public class VolumeDiscountStrategy implements DiscountStrategy<Receipt> {
 		if (receipt == null) {
 			return new Double(0);
 		}
-		return receipt.getGrossTotal() * amount / 100;
+		//return receipt.getGrossTotal() * amount / 100;
+		return CommonUtils.round(receipt.getGrossTotal() * amount / 100);
 	}
 
 }

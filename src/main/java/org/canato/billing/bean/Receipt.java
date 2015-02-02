@@ -1,13 +1,10 @@
 package org.canato.billing.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.canato.billing.discount.manager.DiscountStrategyManager;
-
-import com.google.inject.Inject;
+import org.canato.billing.util.CommonUtils;
 
 /**
  * The bill/receipt bean.
@@ -31,22 +28,17 @@ public class Receipt implements Serializable {
 
 	private static final long serialVersionUID = -8193978199380070835L;
 
-	protected List<ReceiptItem> items; 	// the items
-	protected Double grossTotal; 		// the gross total of the receipt
-	protected Double total; 			// the total of the receipt
-	protected Double discount; 			// the discount applied to the receipt
-
-	private Receipt(List<ReceiptItem> items) {
+	protected List<ReceiptItem> items; 	// the receipt items
+	protected Double discount; 			// the discount applied to the entire receipt
+	
+	public Receipt(List<ReceiptItem> items, Double discount) {
 		super();
-		// make the items' list unmodifiable
 		this.items = Collections.unmodifiableList(items);
-		
-		// calculate the grossTotal
-		Double sum = new Double(0);
-		for (ReceiptItem item : items) {
-			sum += item.getItemGrossTotal() - item.getDiscount();
-		}
-		this.grossTotal = sum;
+		this.discount = discount;
+	}
+	
+	public Receipt(List<ReceiptItem> items) {
+		this(items, new Double(0));
 	}
 	
 	public List<ReceiptItem> getItems() {
@@ -59,24 +51,21 @@ public class Receipt implements Serializable {
 	 * @return
 	 */
 	public Double getGrossTotal() {
-		return grossTotal;
+		Double sum = new Double(0);
+		for (ReceiptItem item : items) {
+			sum += item.getItem().getGrossTotal() - item.getDiscount();
+		}
+//		return sum;
+		return CommonUtils.round(sum);
 	}
 
 	public Double getTotal() {
-		return total;
+//		return BillUtil.round(getGrossTotal() - discount, 5);
+		return getGrossTotal() - discount;
 	}
 
 	public Double getDiscount() {
 		return discount;
-	}
-
-	// setter for total and discount are private
-	private void setTotal(Double total) {
-		this.total = total;
-	}
-	
-	private void setDiscount(Double discount) {
-		this.discount = discount;
 	}
 
 	/**
@@ -89,63 +78,12 @@ public class Receipt implements Serializable {
 		for (ReceiptItem item : items) {
 			sum += item.getDiscount();
 		}
-		return sum + discount;
-	}
-
-	/**
-	 * Receipt builder.
-	 *
-	 */
-	public static class Builder {
-		private List<ReceiptItem> items = new ArrayList<ReceiptItem>();
-		private DiscountStrategyManager discountMngr;
-
-		@Inject
-		public void setDiscountMngr(DiscountStrategyManager discountMngr) {
-			this.discountMngr = discountMngr;
-		}
-
-		public Builder() {
-			super();
-		}
-
-		public Builder add(Item item, int qty) {
-			items.add(new ReceiptItem(item, qty, null));
-			return this;
-		}
-		
-		/**
-		 * Returns the {@link Receipt}. The discount strategies are evaluated only
-		 * at this point.
-		 * 
-		 * @return
-		 */
-		public Receipt build() {
-			
-			// store the discount amount for each item by calling the discount manager
-			for (ReceiptItem receiptItem : items) {
-				Double itemDiscountAmount = discountMngr.getDiscountAmount(receiptItem.getItem());
-//				Double discount = BillUtil.round(itemDiscountAmount * qty);
-				Double discount = itemDiscountAmount * receiptItem.getQuantity();
-				receiptItem.setDiscount(discount);
-			}
-			
-			// store the discount amount for the receipt
-			Receipt receipt = new Receipt(items);
-			Double receiptDiscountAmount = discountMngr.getDiscountAmount(receipt);
-//			Double receiptDiscountAmount = BillUtil.round(discountMngr.getDiscountAmount(receipt));
-
-			receipt.setDiscount(receiptDiscountAmount);
-			receipt.setTotal(receipt.getGrossTotal() - receiptDiscountAmount);
-			//receipt.setTotal(BillUtil.round(receipt.getGrossTotal() - receiptDiscountAmount, 5));
-			
-			return receipt;
-		}
+		//return sum + discount;
+		return CommonUtils.round(sum + discount);
 	}
 	
-	@Override
-	public String toString() {
-		return String.format("Gross Total = %.2f\nDiscount = %.2f\nTOTAL = %.2f\n(total discounts = %.3f)", grossTotal, discount, total, getTotalDiscount());
+	public String print() {
+		return String.format("Gross Total = %.2f\nDiscount = %.2f\nTOTAL = %.2f\n(total discounts = %.3f)", getGrossTotal(), discount, getTotal(), getTotalDiscount());
 	}
 
 }
