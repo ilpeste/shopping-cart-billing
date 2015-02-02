@@ -43,7 +43,6 @@ public class ReceiptItem implements Serializable {
 		if (item.getGrossTotal() <= 0) {
 			return new Double(0);
 		}
-//		return item.getGrossTotal() - discount;
 		return CommonUtils.round(item.getGrossTotal() - discount); 
 	}
 	

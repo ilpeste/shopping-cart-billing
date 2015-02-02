@@ -2,8 +2,10 @@ package org.canato.billing.test.discount.strategy;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 
 import org.canato.billing.discount.strategy.VolumeDiscountStrategy;
+import org.canato.billing.test.helper.Constant;
 import org.canato.billing.test.helper.ReceiptHelper;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +21,18 @@ public class VolumeDiscountStrategyTest {
 	@Before
 	public void setUp() {
 		strategy = new VolumeDiscountStrategy(30d, 5f);
+	}
+	
+	@Test
+	public void shouldNotBeApplicableOnNull() {
+		boolean applicable = strategy.isApplicableOn(null);
+		assertThat(applicable, is(false));
+	}
+	
+	@Test
+	public void amountShouldBeZeroIfItemIsNull() {
+		Double amount = strategy.getAmount(null);
+		assertEquals(0, amount, Constant.DELTA_PRECISION);
 	}
 
 	@Test

@@ -14,10 +14,24 @@ public class CommonUtilsTest {
 	
 	@Test
 	public void roundToScaleTwo() {
-		assertEquals(8.51d, CommonUtils.round(8.509d, 2), Constant.DELTA_PRECISION);
 		assertEquals(8.50d, CommonUtils.round(8.5d, 2), Constant.DELTA_PRECISION);
-		assertEquals(8.91d, CommonUtils.round(8.9056d, 2), Constant.DELTA_PRECISION);
-		assertEquals(8.90d, CommonUtils.round(8.9044d, 2), Constant.DELTA_PRECISION);
+		
+		assertEquals(8.00d, CommonUtils.round(8d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.01d, CommonUtils.round(8.01d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.00d, CommonUtils.round(8.001d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.00d, CommonUtils.round(8.000001d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.00d, CommonUtils.round(8.001d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.00d, CommonUtils.round(8.002d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.00d, CommonUtils.round(8.003d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.00d, CommonUtils.round(8.004d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.00d, CommonUtils.round(8.0044d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.00d, CommonUtils.round(8.0046d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.01d, CommonUtils.round(8.005d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.01d, CommonUtils.round(8.0054d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.01d, CommonUtils.round(8.006d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.01d, CommonUtils.round(8.007d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.01d, CommonUtils.round(8.008d, 2), Constant.DELTA_PRECISION);
+		assertEquals(8.01d, CommonUtils.round(8.009d, 2), Constant.DELTA_PRECISION);
 	}
 	
 	@Test

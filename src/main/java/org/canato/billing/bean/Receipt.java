@@ -55,7 +55,6 @@ public class Receipt implements Serializable {
 		for (ReceiptItem item : items) {
 			sum += item.getItem().getGrossTotal() - item.getDiscount();
 		}
-//		return sum;
 		return CommonUtils.round(sum);
 	}
 
@@ -78,12 +77,11 @@ public class Receipt implements Serializable {
 		for (ReceiptItem item : items) {
 			sum += item.getDiscount();
 		}
-		//return sum + discount;
 		return CommonUtils.round(sum + discount);
 	}
 	
 	public String print() {
-		return String.format("Gross Total = %.2f\nDiscount = %.2f\nTOTAL = %.2f\n(total discounts = %.3f)", getGrossTotal(), discount, getTotal(), getTotalDiscount());
+		return String.format("Gross Total = %.2f\nDiscount = %.2f\nTOTAL = %.2f\n(total discounts = %.2f)", getGrossTotal(), discount, getTotal(), getTotalDiscount());
 	}
 
 }

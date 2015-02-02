@@ -27,8 +27,6 @@ public final class CommonUtils {
 	 */
 	public static final int ROUNDING_TO_NEAREST = 5;
 	
-	
-	
 	/**
 	 * Round the value passed to the precision scale passed.
 	 * 

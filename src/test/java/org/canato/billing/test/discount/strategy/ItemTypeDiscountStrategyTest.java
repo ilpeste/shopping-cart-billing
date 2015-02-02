@@ -51,7 +51,7 @@ public class ItemTypeDiscountStrategyTest {
 	@Test
 	public void amountShouldBeCalculated() {
 		Double amount = strategy.getAmount(ItemHelper.getPasta());
-		assertEquals(0.42d, amount, Constant.DELTA_PRECISION);
+		assertEquals(0.43d, amount, Constant.DELTA_PRECISION);
 	}
 	
 }

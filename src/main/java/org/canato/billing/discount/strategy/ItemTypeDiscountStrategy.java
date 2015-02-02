@@ -31,7 +31,6 @@ public class ItemTypeDiscountStrategy implements DiscountStrategy<Item> {
 		if (item == null) {
 			return new Double(0);
 		}
-//		return item.getPrice() * (amount / 100.0f);
 		return CommonUtils.round(item.getPrice() * (amount / 100.0f));
 	}
 	

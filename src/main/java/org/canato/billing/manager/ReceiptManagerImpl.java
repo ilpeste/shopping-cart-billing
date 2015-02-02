@@ -41,13 +41,11 @@ public class ReceiptManagerImpl implements ReceiptManager {
 		for (Item item : items) {
 			Double itemDiscountAmount = getDiscountAmountFor(item);
 			Double discount = itemDiscountAmount * item.getQuantity();
-//			Double discount = BillUtil.round(itemDiscountAmount * item.getQuantity());
 			receiptItems.add(new ReceiptItem(item, discount));
 		}
 		
 		// store the discount amount for the receipt
 		Double receiptDiscountAmount = getDiscountAmountFor(new Receipt(receiptItems));
-//		Double receiptDiscountAmount = BillUtil.round(getDiscountAmountFor(new Receipt(receiptItems)));
 		Receipt receipt = new Receipt(receiptItems, receiptDiscountAmount);
 		return receipt; 
 	}
