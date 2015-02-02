@@ -59,8 +59,7 @@ public class Receipt implements Serializable {
 	}
 
 	public Double getTotal() {
-//		return BillUtil.round(getGrossTotal() - discount, 5);
-		return getGrossTotal() - discount;
+		return CommonUtils.nearestFiveCent(getGrossTotal() - discount);
 	}
 
 	public Double getDiscount() {

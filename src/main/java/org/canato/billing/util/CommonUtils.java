@@ -56,15 +56,14 @@ public final class CommonUtils {
 	
 	/**
 	 * Rounds the number to the nearest 0.05.
-	 * Example: 123.56, 2.50 = 122.50
+	 * 
+	 * It implies a call to {@link #round(Double, int)} with scale 2.
 	 * 
 	 * @param value
-	 * @param rounding
 	 * @return
 	 */
-//	private static BigDecimal round(BigDecimal value, BigDecimal increment){
-//	    return increment.signum() == 0 ? value :
-//	        (value.divide(increment, 0, RoundingMode.HALF_UP)).multiply(increment);
-//	}
+	public static Double nearestFiveCent(Double value) {
+		return Math.round( round(value) * 20d) / 20d;
+	}
 	
 }

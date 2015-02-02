@@ -45,4 +45,26 @@ public class CommonUtilsTest {
 		assertEquals(8.51d, CommonUtils.round(8.509d, -1), Constant.DELTA_PRECISION);
 	}
 	
+	@Test
+	public void nearestFiveCent() {
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1d), Constant.DELTA_PRECISION);
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1.0d), Constant.DELTA_PRECISION);
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1.00d), Constant.DELTA_PRECISION);
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1.01d), Constant.DELTA_PRECISION);
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1.02d), Constant.DELTA_PRECISION);
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1.0247d), Constant.DELTA_PRECISION);
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1.0248d), Constant.DELTA_PRECISION);
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1.0249d), Constant.DELTA_PRECISION);
+		assertEquals(1.00d, CommonUtils.nearestFiveCent(1.0250d), Constant.DELTA_PRECISION);
+		assertEquals(1.05d, CommonUtils.nearestFiveCent(1.0251d), Constant.DELTA_PRECISION);
+		assertEquals(1.05d, CommonUtils.nearestFiveCent(1.03d), Constant.DELTA_PRECISION);
+		assertEquals(1.05d, CommonUtils.nearestFiveCent(1.04d), Constant.DELTA_PRECISION);
+		assertEquals(1.05d, CommonUtils.nearestFiveCent(1.05d), Constant.DELTA_PRECISION);
+		assertEquals(1.05d, CommonUtils.nearestFiveCent(1.06d), Constant.DELTA_PRECISION);
+		assertEquals(1.05d, CommonUtils.nearestFiveCent(1.07d), Constant.DELTA_PRECISION);
+		assertEquals(1.10d, CommonUtils.nearestFiveCent(1.08d), Constant.DELTA_PRECISION);
+		assertEquals(1.10d, CommonUtils.nearestFiveCent(1.09d), Constant.DELTA_PRECISION);
+		assertEquals(1.10d, CommonUtils.nearestFiveCent(1.090000001d), Constant.DELTA_PRECISION);
+	}
+	
 }

@@ -17,7 +17,6 @@ Go to <workspace>/shopping-cart-billing/target/site/cobertura and open index.htm
 
 TODO
 -----------------------------
-* ROUNDING FUNCTION TO 0.05 for the total
 * add more and more and more tests
 * implement XMLDiscountStrategyService (but is this really needed for the demo?)
 * add a simple CLI interface which parse a CSV and print the output
