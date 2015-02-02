@@ -38,13 +38,19 @@ public class VolumeDiscountStrategyTest {
 	@Test
 	public void shouldBeApplicableWhenReceiptGrossTotalIsBig() {
 		boolean applicable = strategy.isApplicableOn(ReceiptHelper.getBigAmountReceipt());
+		Double amount = strategy.getAmount(ReceiptHelper.getBigAmountReceipt());
+		
 		assertThat(applicable, is(true));
+		assertEquals(3.33d, amount, Constant.DELTA_PRECISION);
 	}
 
 	@Test
 	public void shouldNotBeApplicableWhenReceiptGrossTotalIsSmall() {
 		boolean applicable = strategy.isApplicableOn(ReceiptHelper.getSmallAmountReceipt());
+		Double amount = strategy.getAmount(ReceiptHelper.getSmallAmountReceipt());
+		
 		assertThat(applicable, is(false));
+		assertEquals(0d, amount, Constant.DELTA_PRECISION);
 	}
 	
 }

@@ -28,7 +28,7 @@ public class VolumeDiscountStrategy implements DiscountStrategy<Receipt> {
 	}
 
 	public Double getAmount(Receipt receipt) {
-		if (receipt == null) {
+		if (receipt == null || !isApplicableOn(receipt)) {
 			return new Double(0);
 		}
 		return CommonUtils.round(receipt.getGrossTotal() * amount / 100);

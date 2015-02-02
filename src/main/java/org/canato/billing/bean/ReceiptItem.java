@@ -30,11 +30,7 @@ public class ReceiptItem implements Serializable {
 	public Item getItem() {
 		return item;
 	}
-
-	public void setItem(Item item) {
-		this.item = item;
-	}
-
+	
 	public Double getDiscount() {
 		return discount;
 	}

@@ -80,7 +80,7 @@ public class Receipt implements Serializable {
 	}
 	
 	public String print() {
-		return String.format("Gross Total = %.2f\nDiscount = %.2f\nTOTAL = %.2f\n(total discounts = %.2f)", getGrossTotal(), discount, getTotal(), getTotalDiscount());
+		return String.format("Gross Total = %.2f\nDiscount = %.2f\nTOTAL = %.2f\n(total discounts = %.2f)", getGrossTotal(), getDiscount(), getTotal(), getTotalDiscount());
 	}
 
 }

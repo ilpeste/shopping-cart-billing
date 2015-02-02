@@ -17,6 +17,12 @@ public final class ReceiptHelper {
 	private ReceiptHelper(){
 	}
 	
+	public static Receipt getEmptyReceipt() {
+		List<ReceiptItem> items = new ArrayList<ReceiptItem>();
+		
+		return new Receipt(items);
+	}
+	
 	public static Receipt getSmallAmountReceipt() {
 		List<ReceiptItem> items = new ArrayList<ReceiptItem>();
 		items.add(ReceiptItemHelper.getPasta());
@@ -30,6 +36,14 @@ public final class ReceiptHelper {
 		items.add(ReceiptItemHelper.getBook());
 		
 		return new Receipt(items);
+	}
+	
+	public static Receipt getBigAmountReceiptWithDiscount() {
+		List<ReceiptItem> items = new ArrayList<ReceiptItem>();
+		items.add(ReceiptItemHelper.getPasta());
+		items.add(ReceiptItemHelper.getBook());
+		
+		return new Receipt(items, 5d);
 	}
 	
 }

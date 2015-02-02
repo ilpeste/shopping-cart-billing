@@ -28,7 +28,7 @@ public class ItemTypeDiscountStrategy implements DiscountStrategy<Item> {
 	}
 
 	public Double getAmount(Item item) {
-		if (item == null) {
+		if (item == null || !isApplicableOn(item)) {
 			return new Double(0);
 		}
 		return CommonUtils.round(item.getPrice() * (amount / 100.0f));

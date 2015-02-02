@@ -27,13 +27,19 @@ public class ItemTypeDiscountStrategyTest {
 	@Test
 	public void shouldBeApplicableWhenItemIsGrocery() {
 		boolean applicable = strategy.isApplicableOn(ItemHelper.getPasta());
+		Double amount = strategy.getAmount(ItemHelper.getPasta());
+		
 		assertThat(applicable, is(true));
+		assertEquals(0.43d, amount, Constant.DELTA_PRECISION);
 	}
 
 	@Test
 	public void shouldNotBeApplicableCustomerItemIsNotGrocery() {
 		boolean applicable = strategy.isApplicableOn(ItemHelper.getBook1());
+		Double amount = strategy.getAmount(ItemHelper.getBook1());
+		
 		assertThat(applicable, is(false));
+		assertEquals(0d, amount, Constant.DELTA_PRECISION);
 	}
 	
 	@Test
@@ -46,12 +52,6 @@ public class ItemTypeDiscountStrategyTest {
 	public void amountShouldBeZeroIfItemIsNull() {
 		Double amount = strategy.getAmount(null);
 		assertEquals(0, amount, Constant.DELTA_PRECISION);
-	}
-	
-	@Test
-	public void amountShouldBeCalculated() {
-		Double amount = strategy.getAmount(ItemHelper.getPasta());
-		assertEquals(0.43d, amount, Constant.DELTA_PRECISION);
 	}
 	
 }
