@@ -12,7 +12,7 @@ import org.canato.billing.discount.strategy.VolumeDiscountStrategy;
 import com.google.inject.Singleton;
 
 /**
- * Static implementation of the {@link ReceiptManager}.
+ * Static implementation of the {@link StrategyService}.
  * 
  * This is a mock! All the values are hard-coded!
  * 

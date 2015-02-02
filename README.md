@@ -17,7 +17,6 @@ Go to <workspace>/shopping-cart-billing/target/site/cobertura and open index.htm
 
 TODO
 -----------------------------
-* add more and more and more tests
 * implement XMLDiscountStrategyService (but is this really needed for the demo?)
 * add a simple CLI interface which parse a CSV and print the output
 * correct typos and grammar mistakes in comment... 

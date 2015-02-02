@@ -12,7 +12,7 @@ import org.canato.billing.discount.strategy.DiscountStrategy;
  * This interface may have different implementation based on the source of the
  * data: Static, XML, DB etc...
  * 
- * In this demo application I'll implement the Static and the XML one.
+ * In this demo application I'll implement the Static and (maybe) the XML one.
  * 
  * @author matteo
  *
