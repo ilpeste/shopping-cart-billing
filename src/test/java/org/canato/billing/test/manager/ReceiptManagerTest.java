@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.canato.billing.bean.Item;
 import org.canato.billing.bean.Receipt;
+import org.canato.billing.discount.service.XMLStrategyService;
 import org.canato.billing.manager.ReceiptManager;
 import org.canato.billing.manager.ReceiptManagerImpl;
 import org.canato.billing.test.helper.Constant;
@@ -103,6 +104,30 @@ public class ReceiptManagerTest {
 		assertEquals(0d, receipt.getDiscount(), Constant.DELTA_PRECISION);
 		assertEquals(17.60d, receipt.getTotal(), Constant.DELTA_PRECISION);
 		assertEquals(0d, receipt.getTotalDiscount(), Constant.DELTA_PRECISION);
+	}
+	
+	/**
+	 * The following test don't use the manager injected but another one
+	 */
+	@Test
+	public void shouldCalculateReceiptWithXML() {
+		ReceiptManagerImpl managerForXMLStrategyService = new ReceiptManagerImpl();
+		
+		managerForXMLStrategyService.setDiscountStrategyService(new XMLStrategyService());
+		
+		List<Item> items = new ArrayList<Item>();
+		items.add(ItemHelper.getChocolate());
+		items.add(ItemHelper.getWine());
+		items.add(ItemHelper.getBook2());
+		items.add(ItemHelper.getApple());
+		
+		Receipt receipt = managerForXMLStrategyService.calculate(items);
+		
+		assertNotNull(receipt);
+		assertEquals(47.24d, receipt.getGrossTotal(), Constant.DELTA_PRECISION);
+		assertEquals(2.36d, receipt.getDiscount(), Constant.DELTA_PRECISION);
+		assertEquals(44.9d, receipt.getTotal(), Constant.DELTA_PRECISION);
+		assertEquals(4.17d, receipt.getTotalDiscount(), Constant.DELTA_PRECISION);
 	}
 	
 }

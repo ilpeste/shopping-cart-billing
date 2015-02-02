@@ -19,7 +19,7 @@ public class DiscountManagerInjector extends AbstractModule {
 	protected void configure() {
 		// just change here the class responsible for getting the discount strategies to apply
 		bind(StrategyService.class).to(StaticStrategyService.class);
-		//bind(StrategyService.class).to(XMLStrategyService.class);
+//		bind(StrategyService.class).to(XMLStrategyService.class);
 		
 		// bind to the receipt manager
 		bind(ReceiptManager.class).to(ReceiptManagerImpl.class);

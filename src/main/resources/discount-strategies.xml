@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<discount-strategies>
+	<item-strategies>
+		<strategy>
+			<code>ITEM_TYPE</code>
+			<type>GROCERY</type>>
+			<amount>7.5</amount>
+		</strategy>
+		<strategy>
+			<code>ITEM_TYPE</code>
+			<type>BOOK</type>
+			<amount>12</amount>
+		</strategy>
+	</item-strategies>
+
+	<receipt-strategies>
+		<strategy>
+			<code>VOLUME</code>
+			<threshold>40</threshold>
+			<amount>5</amount>
+		</strategy>
+	</receipt-strategies>
+</discount-strategies>
