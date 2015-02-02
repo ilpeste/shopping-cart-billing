@@ -1,6 +1,6 @@
 Demo application for calculating a bill
 -----------------------------
-Simple CLI app for simulating a shopping cart billing system.
+Simple service for simulating a shopping cart billing system.
 
 #### INSTRUCTIONS 
 This is a Maven project with JUnit4 test suite.
